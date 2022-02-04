@@ -1,0 +1,126 @@
+[2022-02-01 12:52:00,704] {taskinstance.py:1035} INFO - Dependencies all met for <TaskInstance: teste-email.task_fail scheduled__2022-02-01T12:50:00+00:00 [queued]>
+[2022-02-01 12:52:00,712] {taskinstance.py:1035} INFO - Dependencies all met for <TaskInstance: teste-email.task_fail scheduled__2022-02-01T12:50:00+00:00 [queued]>
+[2022-02-01 12:52:00,712] {taskinstance.py:1241} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-01 12:52:00,712] {taskinstance.py:1242} INFO - Starting attempt 1 of 2
+[2022-02-01 12:52:00,712] {taskinstance.py:1243} INFO - 
+--------------------------------------------------------------------------------
+[2022-02-01 12:52:00,722] {taskinstance.py:1262} INFO - Executing <Task(PythonOperator): task_fail> on 2022-02-01 12:50:00+00:00
+[2022-02-01 12:52:00,725] {standard_task_runner.py:52} INFO - Started process 2496 to run task
+[2022-02-01 12:52:00,727] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'teste-email', 'task_fail', 'scheduled__2022-02-01T12:50:00+00:00', '--job-id', '61', '--raw', '--subdir', 'DAGS_FOLDER/teste-email.py', '--cfg-path', '/tmp/tmpxqgt_v31', '--error-file', '/tmp/tmpu2rumteb']
+[2022-02-01 12:52:00,727] {standard_task_runner.py:77} INFO - Job 61: Subtask task_fail
+[2022-02-01 12:52:00,754] {logging_mixin.py:109} INFO - Running <TaskInstance: teste-email.task_fail scheduled__2022-02-01T12:50:00+00:00 [running]> on host 9d058234ef52
+[2022-02-01 12:52:00,791] {taskinstance.py:1429} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=israelb@sauter.digital
+AIRFLOW_CTX_DAG_OWNER=data-engineering
+AIRFLOW_CTX_DAG_ID=teste-email
+AIRFLOW_CTX_TASK_ID=task_fail
+AIRFLOW_CTX_EXECUTION_DATE=2022-02-01T12:50:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2022-02-01T12:50:00+00:00
+[2022-02-01 12:52:00,791] {taskinstance.py:1703} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1332, in _run_raw_task
+    self._execute_task_with_callbacks(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1458, in _execute_task_with_callbacks
+    result = self._execute_task(context, self.task)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1514, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 151, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 162, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/teste-email.py", line 25, in function_error
+    raise AirflowFailException('alerta_dag_google')
+airflow.exceptions.AirflowFailException: alerta_dag_google
+[2022-02-01 12:52:00,800] {taskinstance.py:1280} INFO - Immediate failure requested. Marking task as FAILED. dag_id=teste-email, task_id=task_fail, execution_date=20220201T125000, start_date=20220201T125200, end_date=20220201T125200
+[2022-02-01 12:52:00,809] {warnings.py:110} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/email.py:102: PendingDeprecationWarning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+  send_mime_email(e_from=smtp_mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+
+[2022-02-01 12:52:00,809] {email.py:208} INFO - Email alerting: attempt 1
+[2022-02-01 12:52:06,194] {email.py:208} INFO - Email alerting: attempt 1
+[2022-02-01 12:52:11,608] {taskinstance.py:1754} ERROR - Failed to send email to: ['israelb@sauter.digital']
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1332, in _run_raw_task
+    self._execute_task_with_callbacks(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1458, in _execute_task_with_callbacks
+    result = self._execute_task(context, self.task)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1514, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 151, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 162, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/teste-email.py", line 25, in function_error
+    raise AirflowFailException('alerta_dag_google')
+airflow.exceptions.AirflowFailException: alerta_dag_google
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2214, in email_alert
+    send_email(self.task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 66, in send_email
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 102, in send_email_smtp
+    send_mime_email(e_from=smtp_mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 219, in send_mime_email
+    conn.login(smtp_user, smtp_password)
+  File "/usr/local/lib/python3.7/smtplib.py", line 735, in login
+    raise last_exception
+  File "/usr/local/lib/python3.7/smtplib.py", line 726, in login
+    initial_response_ok=initial_response_ok)
+  File "/usr/local/lib/python3.7/smtplib.py", line 647, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.3 Authentication unsuccessful [CPYP284CA0046.BRAP284.PROD.OUTLOOK.COM]')
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1752, in handle_failure
+    self.email_alert(error)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2216, in email_alert
+    send_email(self.task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 66, in send_email
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 102, in send_email_smtp
+    send_mime_email(e_from=smtp_mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 219, in send_mime_email
+    conn.login(smtp_user, smtp_password)
+  File "/usr/local/lib/python3.7/smtplib.py", line 735, in login
+    raise last_exception
+  File "/usr/local/lib/python3.7/smtplib.py", line 726, in login
+    initial_response_ok=initial_response_ok)
+  File "/usr/local/lib/python3.7/smtplib.py", line 647, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.3 Authentication unsuccessful [CP4P284CA0032.BRAP284.PROD.OUTLOOK.COM]')
+[2022-02-01 12:52:11,621] {standard_task_runner.py:91} ERROR - Failed to execute job 61 for task task_fail
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/task/task_runner/standard_task_runner.py", line 85, in _start_by_fork
+    args.func(args, dag=self.dag)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/cli/cli_parser.py", line 48, in command
+    return func(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/cli.py", line 92, in wrapper
+    return f(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/cli/commands/task_command.py", line 292, in task_run
+    _run_task_by_selected_method(args, dag, ti)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/cli/commands/task_command.py", line 107, in _run_task_by_selected_method
+    _run_raw_task(args, ti)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/cli/commands/task_command.py", line 184, in _run_raw_task
+    error_file=args.error_file,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/session.py", line 70, in wrapper
+    return func(*args, session=session, **kwargs)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1332, in _run_raw_task
+    self._execute_task_with_callbacks(context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1458, in _execute_task_with_callbacks
+    result = self._execute_task(context, self.task)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1514, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 151, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 162, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/teste-email.py", line 25, in function_error
+    raise AirflowFailException('alerta_dag_google')
+airflow.exceptions.AirflowFailException: alerta_dag_google
+[2022-02-01 12:52:11,666] {local_task_job.py:154} INFO - Task exited with return code 1
+[2022-02-01 12:52:11,686] {local_task_job.py:264} INFO - 0 downstream tasks scheduled from follow-on schedule check

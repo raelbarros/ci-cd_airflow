@@ -1,0 +1,29 @@
+steps:
+# # Clone repositorio
+# - name: 'gcr.io/cloud-builders/git'
+#   args: ['clone', 'https://github.com/raelbarros/ci-cd_airflow.git']
+
+# # Create Docker image
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['build', '-t'  ,'gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}','.']
+
+# #Push the image  
+# - name: 'gcr.io/cloud-builders/docker'
+#   args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}']
+
+# Connect VM
+- name: gcr.io/${_PROJECT}/connect-gce
+
+
+
+substitutions:
+  #Variaveis
+
+  #GCP configurations
+  _PROJECT: sauter-labs-338314
+  
+  # #Repository
+  # _CONTAINERNAME: airflow-service   
+  
+  # # Developers ONLY change
+  # _VERSION: v1.0
