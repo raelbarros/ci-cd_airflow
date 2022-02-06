@@ -29,11 +29,11 @@ repos:
   #     require_serial: true
   #     exclude: ^(venv/|.venv/|.env|docs/)
   #     types: ['sql']
-  # - repo: local
-  #   hooks:
-  #   - id: pytest
-  #     name: pytest
-  #     entry: pytest
-  #     language: system
-  #     pass_filenames: false
-  #     always_run: true
+  - repo: local
+    hooks:
+    - id: pytest
+      name: pytest
+      entry: pytest
+      language: system
+      pass_filenames: false
+      always_run: true
