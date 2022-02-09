@@ -3,6 +3,7 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.exceptions import AirflowFailException
 
+# TESTE CLOUD BUILD
 
 default_args = {
     "owner": "data-engineering",
