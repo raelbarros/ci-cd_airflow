@@ -13,8 +13,8 @@ steps:
 
 # Connect VM
 - name: gcr.io/${_PROJECT}/connect-gce
-
-
+  env:
+    - COMMAND=ls
 
 substitutions:
   #Variaveis
