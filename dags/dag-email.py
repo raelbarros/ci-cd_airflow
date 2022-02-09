@@ -4,6 +4,7 @@ from airflow.operators.python_operator import PythonOperator
 from airflow.exceptions import AirflowFailException
 
 # TESTE CLOUD BUILD
+# TESTE 02
 
 default_args = {
     "owner": "data-engineering",
