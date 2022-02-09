@@ -16,14 +16,10 @@ steps:
 - name: gcr.io/${_PROJECT}/connect-gce
   env:
     - COMMAND=ls
-# Access Folder
+# Access Folder and Run Git Pull
 - name: gcr.io/${_PROJECT}/connect-gce
   env:
-    - COMMAND=cd ci-cd_airflow
-# Run Git Pull
-- name: gcr.io/${_PROJECT}/connect-gce
-  env:
-    - COMMAND=git pull
+    - COMMAND=cd ci-cd_airflow && git pull
 
 
 substitutions:
