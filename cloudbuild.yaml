@@ -12,10 +12,7 @@ steps:
 # - name: 'gcr.io/cloud-builders/docker'
 #   args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}']
 
-# Connect VM
-- name: gcr.io/${_PROJECT}/connect-gce
-  env:
-    - COMMAND=ls
+
 # Access Folder and Run Git Pull
 - name: gcr.io/${_PROJECT}/connect-gce
   env:
