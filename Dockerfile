@@ -1,4 +1,6 @@
 FROM apache/airflow:2.1.3
+MAINTAINER sauter.digital
+
 USER root
 
 RUN apt-get update && \

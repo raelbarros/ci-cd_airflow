@@ -1,6 +1,14 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
+from transformer.transformer import Transformer
+
+try:
+    # Works locally with tests
+    from transformer.transformer import Transformer
+except ImportError:
+    # Works in docker container
+    from dags.transformer.transformer import Transformer
 
 # TESTE CLOUD BUILD
 # TESTE 02
@@ -24,7 +32,7 @@ dag = DAG(
 
 
 def hello_world():
-    print("hello_world")
+    Transformer.main()
 
 
 task_fail = PythonOperator(

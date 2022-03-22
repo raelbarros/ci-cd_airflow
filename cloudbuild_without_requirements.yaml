@@ -6,28 +6,29 @@ steps:
 
 # # Create Docker image
 # - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t'  ,'gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}','.']
+#   args: ['build', '-t'  ,'gcr.io/${_PROJECT}/${_CONTAINERNAME}','.']
 
 # #Push the image  
 # - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}:${_VERSION}']
+#   args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}']
 
 
 # Access Folder and Run Git Pull
 - name: gcr.io/${_PROJECT}/connect-gce
   env:
     - COMMAND=cd ci-cd_airflow && git pull
+    - USERNAME=airflow
+    - INSTANCE_NAME=instance-1
+    - ZONE=us-central1-a	
+    - WORKSPACE=ci-cd_airflow
 
 
 substitutions:
   #Variaveis
 
   #GCP configurations
-  _PROJECT: sauter-labs-338314
+  _PROJECT: sauter-apps
   
   #FIXME: DELETAR
   # #Repository
-  # _CONTAINERNAME: airflow-service   
-  
-  # # Developers ONLY change
-  # _VERSION: v1.0
+  # _CONTAINERNAME: airflow-xcelis 

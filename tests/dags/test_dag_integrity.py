@@ -3,7 +3,7 @@ from os import path
 import pytest
 import importlib.util
 from airflow import models as airflow_models
-from airflow.utils.dag_cycle_tester import test_cycle as _test_cycle
+from airflow.utils.dag_cycle_tester import test_cycle as cycle_dag
 
 
 DAG_PATH = glob.glob(
@@ -24,7 +24,7 @@ def teste_dag_integrity(dag_path):
     assert dag_obj
 
     for dag in dag_obj:
-        _test_cycle(dag)
+        cycle_dag(dag)
 
 
 def _import_file(module_name, module_path):

@@ -1,0 +1,28 @@
+steps:
+# Clone repositorio
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://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@github.com/arpyia/data_lake.git']
+
+# Create Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t'  ,'gcr.io/${_PROJECT}/${_CONTAINERNAME}','.']
+
+#Push the image  
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push','gcr.io/${_PROJECT}/${_CONTAINERNAME}']
+
+
+# Access Folder and Run Git Pull
+- name: gcr.io/${_PROJECT}/connect-gce
+  env:
+    - COMMAND=cd ci-cd_airflow && git pull
+
+
+substitutions:
+  #Variaveis
+
+  #GCP configurations
+  _PROJECT: projeto-arpya-dev
+  
+  #Repository
+  _CONTAINERNAME: airflow-xcelis 
