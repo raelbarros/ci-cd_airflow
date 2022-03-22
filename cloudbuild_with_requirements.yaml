@@ -26,7 +26,7 @@ substitutions:
   #Variaveis
 
   #GCP configurations
-  _PROJECT: projeto-arpya-dev
+  _PROJECT: sauter-apps
   
   #Repository
   _CONTAINERNAME: airflow-xcelis 

@@ -46,4 +46,3 @@ pre-commit
 sqlfluff
 apache-airflow
 pyodbc
-Faker
