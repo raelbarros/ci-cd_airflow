@@ -1,7 +1,7 @@
 steps:
 # Clone repositorio
 - name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://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@github.com/arpyia/data_lake.git']
+  args: ['clone', 'https://github.com/raelbarros/ci-cd_airflow.git']
 
 # Create Docker image
 - name: 'gcr.io/cloud-builders/docker'
