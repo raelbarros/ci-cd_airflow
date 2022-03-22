@@ -15,7 +15,7 @@ steps:
 # Access Folder and Run Git Pull
 - name: gcr.io/${_PROJECT}/connect-gce
   env:
-    - COMMAND=cd ci-cd_airflow && sudo docker-compose -f docker-compose-dev.yaml up -d --force-recreate
+    - COMMAND=cd ci-cd_airflow && sudo docker-compose -f docker-compose.yaml up -d --force-recreate
     - USERNAME=airflow
     - INSTANCE_NAME=instance-1
     - ZONE=us-central1-a	
